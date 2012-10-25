@@ -1,9 +1,15 @@
 
 function x = contrastAdjust(img)
-  intensityCount(255) = 0;
+  intensityProb(255) = 0;
   for i = 1:size(img)(1)
     for j = 1:size(img)(2)
-      ++intensityCount(img(i)(j));
+      ++intensityProb(img(i)(j));
     endfor
   endfor
+  intensityProb /= numel(img);
+  fda(1) = intensityProb(1);
+  for i = 2:255
+    fda(i) = fda(i-1) + intensityProb(i);
+  endfor
+  
   
