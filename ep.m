@@ -40,3 +40,12 @@ function x = blur(img)
        1/16 2/16 1/16];
   x = convolution(img, w);
 endfunction
+
+function x = sharpen(img)
+  w = [-1 -1 -1;
+       -1  8 -1;
+       -1 -1 -1];
+  mask = convolution(img, w);
+  x = mask # Isso deve estar errado
+endfunction
+  
