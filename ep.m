@@ -11,5 +11,8 @@ function x = contrastAdjust(img)
   for i = 2:255
     fda(i) = fda(i-1) + intensityProb(i);
   endfor
-  
-  
+  fdamin = min(fda);
+  # fdamax = max(fda);
+  for i = 1:255
+    h(i) = round ((fda - fdamin) / (numel(img) - fdamin) * 255);
+  endfor
