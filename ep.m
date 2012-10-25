@@ -3,7 +3,7 @@ function x = contrastAdjust(img)
   intensityProb(255) = 0;
   for i = 1:size(img)(1)
     for j = 1:size(img)(2)
-      ++intensityProb(img(i)(j));
+      ++intensityProb(img(i, j));
     endfor
   endfor
   intensityProb /= numel(img);
@@ -16,3 +16,10 @@ function x = contrastAdjust(img)
   for i = 1:255
     h(i) = round ((fda - fdamin) / (numel(img) - fdamin) * 255);
   endfor
+  x = img;
+  for i = 1:size(img)(1)
+    for j = 1:size(img)(2)
+      x(i, j) = h(x(i,j));
+    endfor
+  endfor
+endfunction
