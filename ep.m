@@ -23,3 +23,13 @@ function x = contrastAdjust(img)
     endfor
   endfor
 endfunction
+
+function x = convolution(f,g)
+  x = f;
+  for i = 1:size(f)(1)
+    for j = 1:size(f)(2)
+      #TODO: Fix para casos nas fronteiras
+      x(i, j) = sum(sum( f(beginl:endl, beginc:endc) .* g));
+    endfor
+  endfor
+endfunction
