@@ -46,6 +46,6 @@ function x = sharpen(img)
        -1  8 -1;
        -1 -1 -1];
   mask = convolution(img, w);
-  x = mask # Isso deve estar errado
+  x = img + mask # Isso talvez esteja errado
 endfunction
   
