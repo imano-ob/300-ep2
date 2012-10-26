@@ -29,22 +29,22 @@ function x = convolution(f,g)
   for i = 1:size(f)(1)
     for j = 1:size(f)(2)
       #TODO: Fix para casos nas fronteiras
-      x(i, j) = sum(sum( f(beginl:endl, beginc:endc) .* g));
+      x(i, j) = sum(sum( f(i-1:i+1, j-1:j+1) .* g));
     endfor
   endfor
 endfunction
 
 function x = blur(img)
-  w = [1/16 2/16 1/16;
-       2/16 4/16 2/16;
-       1/16 2/16 1/16];
+  w = [1/16, 2/16, 1/16;
+       2/16, 4/16, 2/16;
+       1/16, 2/16, 1/16];
   x = convolution(img, w);
 endfunction
 
 function x = sharpen(img)
-  w = [-1 -1 -1;
-       -1  8 -1;
-       -1 -1 -1];
+  w = [-1/16, -1/16, -1/16;
+       -1/16,  8/16, -1/16;
+       -1/16, -1/16, -1/16];
   mask = convolution(img, w);
   x = img + mask # Isso talvez esteja errado
 endfunction
