@@ -6,15 +6,20 @@ function x = contrast(img)
       ++intensityProb(img(i, j)+1);
     endfor
   endfor
-  intensityProb ./= numel(img);
+  intensityProb .*= 1.0
+  intensityProb ./= numel(img)
     fda(1) = intensityProb(1);
   for i = 2:256
     fda(i) = fda(i-1) + intensityProb(i);
   endfor
-  fdamin = min(fda);
-  # fdamax = max(fda);
+  fdamin = min(fda)
+  fdamax = max(fda);
   for i = 1:256
-    h(i) = round ((fda(i) - fdamin) / (numel(img) - fdamin) * 255);
+    l = (fda(i) - fdamin) * 255
+    k = fdamax - fdamin
+    #k = (numel(img) - fdamin)
+    m = l/k
+    h(i) = round ( m)
   endfor
   x = img;
   for i = 1:size(img)(1)
