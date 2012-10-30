@@ -22,7 +22,7 @@ function [x, intensityCount, finalIntensityCount] = contrast(img)
   finalIntensityCount(256) = 0;
   for i = 1:size(x)(1)
     for j = 1:size(x)(2)
-      ++intensityCount(x(i, j)+1);
+      ++finalIntensityCount(x(i, j)+1);
     endfor
   endfor
 endfunction
