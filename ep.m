@@ -9,17 +9,17 @@ endif
 filename = args{1};
 option = args{2};
 image = imread(filename);
-if strcmp(option, "-constrast")
-  finalimage = contrast(image);
+if strcmp(option, "-contrast")
+  [finalimage, _, __] = contrast(image);
 elseif strcmp(option, "-blur")
   finalimage = blur(image);
 elseif strcmp(option, "-sharpen")
-  finalimage = sharpen(image);
+  [finalimage, _] = sharpen(image);
 else
   disp("Opção não reconhecida!");
   exit();
 endif
 dotpos = size(filename)(2) - 3;
 finalfilename = filename;
-finalfilename(dotpos:dotpos+9) = "-final.jpg"
+finalfilename(dotpos:dotpos+9) = "-final.jpg";
 imwrite (finalimage, finalfilename);
