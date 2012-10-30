@@ -6,7 +6,8 @@ function [x, mask] = sharpen(img)
   mask .-= min(min(mask));
   mask .*= (255/max(max(mask)));
   mask .-= 127;
-  mask = uint8(mask);
   x = double(img) + double(mask);
   x = uint8(x);
+  mask .+= 127;
+  mask = uint8(mask);
 endfunction
