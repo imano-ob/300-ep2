@@ -10,11 +10,11 @@ filename = args{1};
 option = args{2};
 image = imread(filename);
 if strcmp(option, "-contrast")
-  [finalimage, _, __] = contrast(image);
+  finalimage = contrast(image);
 elseif strcmp(option, "-blur")
   finalimage = blur(image);
 elseif strcmp(option, "-sharpen")
-  [finalimage, _] = sharpen(image);
+  finalimage = sharpen(image);
 else
   disp("Opção não reconhecida!");
   exit();
